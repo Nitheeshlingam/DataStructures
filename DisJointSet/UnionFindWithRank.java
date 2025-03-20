@@ -3,7 +3,7 @@ package DisJointSet;
 import java.util.*;
 
 class UnionFindWithRank {
-    static class Node {
+    private static class Node {
         int parent;
         int rank;
         Node() {
@@ -14,13 +14,13 @@ class UnionFindWithRank {
 
     static Node[] dsuf;
     
-    static int find(int v) {
+    private static int find(int v) {
         if (dsuf[v].parent == -1)
             return v;
         return dsuf[v].parent = find(dsuf[v].parent);
     }
 
-    static void unionOp(int fromP, int toP) {
+    private static void unionOp(int fromP, int toP) {
         if (dsuf[fromP].rank > dsuf[toP].rank) {
             dsuf[toP].parent = fromP;
         } else if (dsuf[fromP].rank < dsuf[toP].rank) {
@@ -31,7 +31,7 @@ class UnionFindWithRank {
         }
     }
 
-    static boolean isCyclic(List<int[]> edgeList) {
+    private static boolean isCyclic(List<int[]> edgeList) {
         for (int[] edge : edgeList) {
             int fromP = find(edge[0]);
             int toP = find(edge[1]);
