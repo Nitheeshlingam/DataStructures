@@ -1,4 +1,4 @@
-package DisJointSet;
+package Graph;
 
 import java.util.*;
 
